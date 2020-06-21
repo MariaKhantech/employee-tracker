@@ -66,8 +66,9 @@ class sqlFunctions {
 	}
 
 	//update the employee role
-	updateEmployeeRoles() {
-		console.log('TODO');
+	updateEmployeeRoles(employee, role) {
+		console.log(employee, role);
+		return this.connection.query('UPDATE employee SET role_id = ? WHERE id = ?', [ employee, role ]);
 	}
 }
 

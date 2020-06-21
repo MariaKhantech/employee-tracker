@@ -2,6 +2,8 @@ const inquirer = require('inquirer');
 const consoleTable = require('console.table');
 require('dotenv').config();
 const sqlFunctions = require('./db/sql-functions');
+
+//create a new sqlFunctions class called sqlConnect
 const sqlConnect = new sqlFunctions();
 
 let listDep;
@@ -21,7 +23,7 @@ const whatWouldYouLike = [
 			'Would you like to view departments?',
 			'Would you like to view roles?',
 			'Would you like to view employees?',
-			'Would you like to update an employee role?',
+			'Update an employee role?',
 			'Exit'
 			// 'View all employees',
 		]
@@ -36,7 +38,6 @@ const startApp = async () => {
 	await inquirer
 		.prompt(whatWouldYouLike)
 		.then(async (response) => {
-			console.log(response);
 			//if statement that checks what the response is, and execute action
 			//handle add dept
 			if (response.selectedOption === 'Would you like to add a department?') {
@@ -65,7 +66,6 @@ const startApp = async () => {
 				await sqlConnect.viewRoles().then((response) => {
 					console.table(response);
 				});
-				console.log('view role works');
 				startApp();
 			}
 			//handle view employees
@@ -73,18 +73,16 @@ const startApp = async () => {
 				await sqlConnect.viewEmployees().then((response) => {
 					console.table(response);
 				});
-				console.log('view emp works');
 				startApp();
 			}
 			//handle update employee role
-			if (response.selectedOption === 'Would you like to update an employee role?') {
-				console.log('TODO');
+			if (response.selectedOption === 'Update an employee role') {
+				await updateEmployeeRole();
 				startApp();
 			}
 			//handle exit
 			if (response.selectedOption === 'Exit') {
 				exit();
-				console.log('exits');
 			}
 		})
 		.catch((error) => {
@@ -186,9 +184,28 @@ const addEmployees = async () => {
 };
 
 //function to update the employee role
-const updateEmployeeRole = () => {};
+const updateEmployeeRole = async () => {
+	await inquirer
+		.prompt([
+			{
+				type: 'list',
+				name: 'employee',
+				message: 'Which employee would you like to update?',
+				choices: listEmployees
+			},
+			{
+				type: 'list',
+				name: 'role',
+				message: 'Choose the new role for employee:',
+				choices: listRoles
+			}
+		])
+		.then(async (response) => {
+			sqlConnect.updateEmployeeRoles(response.employee, response.role);
+		});
+};
 
-//exits the commnnd line (CLI) application
+//exits the command line (CLI) application
 const exit = () => {
 	sqlConnect.closeConnection();
 	console.log('Goodbye....and have a nice day! :)');
