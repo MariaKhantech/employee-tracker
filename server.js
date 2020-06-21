@@ -2,8 +2,11 @@ const inquirer = require('inquirer');
 const consoleTable = require('console.table');
 require('dotenv').config();
 const sqlFunctions = require('./db/sql-functions');
-
 const sqlConnect = new sqlFunctions();
+
+let listDep;
+let listRoles;
+let listEmployees;
 
 //Starting questions and options for the application what would you like variable is to start what would you like to do?
 const whatWouldYouLike = [
@@ -25,13 +28,9 @@ const whatWouldYouLike = [
 	}
 ];
 
-let listDep;
-let listRoles;
-let listEmployees;
-
 //this function starts the application questions(entry point)
 const startApp = async () => {
-	//store list as the first thing we do
+	//store list as the first thing we do (most recent)
 	await loadLists();
 	//begin asking questions
 	await inquirer
@@ -39,24 +38,29 @@ const startApp = async () => {
 		.then(async (response) => {
 			console.log(response);
 			//if statement that checks what the response is, and execute action
+			//handle add dept
 			if (response.selectedOption === 'Would you like to add a department?') {
 				await addDep();
 				startApp();
 			}
+			//handle add role
 			if (response.selectedOption === 'Would you like to add a role?') {
 				await addRoles();
 				startApp();
 			}
+			//handle add employee
 			if (response.selectedOption === 'Would you like to add an employee?') {
 				await addEmployees();
 				startApp();
 			}
+			//handle view derpartment
 			if (response.selectedOption === 'Would you like to view departments?') {
 				await sqlConnect.viewDepartments().then((response) => {
 					console.table(response);
 				});
 				startApp();
 			}
+			//handle view roles
 			if (response.selectedOption === 'Would you like to view roles?') {
 				await sqlConnect.viewRoles().then((response) => {
 					console.table(response);
@@ -64,6 +68,7 @@ const startApp = async () => {
 				console.log('view role works');
 				startApp();
 			}
+			//handle view employees
 			if (response.selectedOption === 'Would you like to view employees?') {
 				await sqlConnect.viewEmployees().then((response) => {
 					console.table(response);
@@ -71,10 +76,12 @@ const startApp = async () => {
 				console.log('view emp works');
 				startApp();
 			}
+			//handle update employee role
 			if (response.selectedOption === 'Would you like to update an employee role?') {
-				console.log('view update role works');
+				console.log('TODO');
 				startApp();
 			}
+			//handle exit
 			if (response.selectedOption === 'Exit') {
 				exit();
 				console.log('exits');
@@ -85,6 +92,7 @@ const startApp = async () => {
 		});
 }; // end of if statments
 
+//loads a list of departments, roles and employees
 const loadLists = async () => {
 	//load the list of departments
 	sqlConnect.listDepartments().then((response) => {
@@ -151,17 +159,17 @@ const addEmployees = async () => {
 		.prompt([
 			{
 				type: 'input',
-				name: 'title',
+				name: 'first',
 				message: 'Enter the first name:'
 			},
 			{
 				type: 'input',
-				name: 'salary',
+				name: 'last',
 				message: 'Enter the last name:'
 			},
 			{
 				type: 'list',
-				name: 'departmentId',
+				name: 'roleId',
 				message: 'Select the role:',
 				choices: listRoles
 			},
@@ -173,10 +181,12 @@ const addEmployees = async () => {
 			}
 		])
 		.then(async (response) => {
-			console.log(response);
-			sqlConnect.addEmployee(response.title, response.salary, response.departmentId);
+			sqlConnect.addEmployee(response.first, response.last, response.roleId, response.departmentId);
 		});
 };
+
+//function to update the employee role
+const updateEmployeeRole = () => {};
 
 //exits the commnnd line (CLI) application
 const exit = () => {
