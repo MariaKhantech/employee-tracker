@@ -1,33 +1,15 @@
-<!--
-*** Thanks for checking out this README Template. If you have a suggestion that would
-*** make this better, please fork the repo and create a pull request or simply open
-*** an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
--->
+
+![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)
+
+<!--linkedin logo-->
+<a class="LI-simple-link" href='https://www.linkedin.com/in/maria-khan-9202471a3?trk=profile-badge'>Maria's LinkedIn <img src="https://edent.github.io/SuperTinyIcons/images/svg/linkedin.svg" alt="linkedin logo." width="20" height="20"> </a></div>
 
 
 
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
-<!-- PROJECT LOGO -->
-
- 
+<!-- image for team tracker-->
   <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="#">
+    <img src="https://image.freepik.com/free-vector/recruiting-professionals-studying-candidate-profiles_1262-21404.jpg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Employee Tracker</h3>
