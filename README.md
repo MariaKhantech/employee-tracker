@@ -52,7 +52,6 @@ These are the node packages used in this application.
     > dotenv
     > inquirer
     > mysql
-
 ```
 
 
