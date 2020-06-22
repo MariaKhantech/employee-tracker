@@ -25,7 +25,7 @@
 ## Table of Contents
 
 * [About Employee Tracker](#About-Employee-Tracker)
-  * [Built With](#built-with)
+* [Built With](#built-with)
 * [Node Packages](#Node-Packages)
 * [Usage](#usage)
 * [Contributing](#contributing)
@@ -61,6 +61,8 @@ These are the node packages used in this application.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+![employee-tracker](https://user-images.githubusercontent.com/61640527/85238167-0b3d8b00-b3fa-11ea-80ba-179d639b4eea.gif)
+
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -72,20 +74,13 @@ These are the node packages used in this application.
 * [@MariaKhantech](https://github.com/MariaKhantech) 💻
 
 
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
 <!-- CONTACT -->
 ## Contact
 
 If you want to contact me you can reach me at <mariatechfuture@gmail.com>.
 
 ***Link for GitHub***
-https://mariakhantech.github.io/employee-summary/.
+
 
 
 

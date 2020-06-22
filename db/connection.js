@@ -16,7 +16,6 @@ connection.connect((err) => {
 	if (err) {
 		throw err;
 	}
-	console.log('connection successful');
 });
 
 connection.query = util.promisify(connection.query);

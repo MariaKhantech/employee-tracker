@@ -23,7 +23,7 @@ const whatWouldYouLike = [
 			'Would you like to view departments?',
 			'Would you like to view roles?',
 			'Would you like to view employees?',
-			'Update an employee role?',
+			'Update an employee role',
 			'Exit'
 			// 'View all employees',
 		]
@@ -119,7 +119,6 @@ const addDep = async () => {
 			}
 		])
 		.then(async (response) => {
-			console.log(response);
 			sqlConnect.addDepartment(response.departmentName);
 		});
 };
@@ -146,7 +145,6 @@ const addRoles = async () => {
 			}
 		])
 		.then(async (response) => {
-			console.log(response);
 			sqlConnect.addRole(response.title, response.salary, response.departmentId);
 		});
 };
@@ -208,7 +206,6 @@ const updateEmployeeRole = async () => {
 //exits the command line (CLI) application
 const exit = () => {
 	sqlConnect.closeConnection();
-	console.log('Goodbye....and have a nice day! :)');
 };
 
 //calling startApp function,
